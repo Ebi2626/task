@@ -1,4 +1,14 @@
 $basicWidth: 90%;
 $basicWidth2: 85%;
+$maxWidthPhone: 400px;
 $number: 88px;
+$numberTablet: 122px;
+$numberDesktop: 166px;
 $text: 12px;
+$textDesktop: 16px;
+
+// Devices
+
+$phone: "(min-width: 470px)";
+$tablet: "(min-width: 768px)";
+$desktop: "(min-width: 1024px)";

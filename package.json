@@ -1,10 +1,10 @@
 {
-  "name": "Webpack4",
-  "author": "",
+  "name": "task",
+  "author": "Edwin Harmata",
   "main": "js/main.js",
   "license": "MIT",
   "scripts": {
-    "start:dev": "webpack-dev-server",
+    "dev:server": "webpack-dev-server --watch",
     "dev": "webpack --mode development --watch",
     "build": "webpack --mode production --watch"
   },
