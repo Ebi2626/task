@@ -1,12 +1,12 @@
 %flexRow {
-  display: flex;
+  display: flex !important;
   flex-direction: row;
   align-items: center;
   margin-left: auto;
   margin-right: auto;
 }
 %flexColumn {
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   justify-content: center;
   margin-left: auto;

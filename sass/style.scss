@@ -12,6 +12,15 @@
 body {
     overflow-X: hidden;
 }
+.azure {
+    background-color: $azure;
+}
+.lime {
+    background-color: $lime;
+}
+.navyBlue {
+    background-color: $navyBlue;
+}
 .nav {
     position: relative;
     @extend %flexRow;
@@ -49,14 +58,15 @@ body {
 
     .nav__wrapper {
         padding-left: 40px;
+        transition: right .3s ease-in-out;
         display: none;
     }
     .nav__wrapper--active {
-        position: fixed;
+        position: fixed !important;
         @extend %flexColumn;
         z-index: 10;
         padding: 0px;
-        left: 0px;
+        right: -100vw;
         top: 67px;
         width: 100%;
         background-color: black;
@@ -130,24 +140,25 @@ body {
         width: 100%;
         z-index: 2;
         .elipse1 {
-            @include elipseLeft (22px, 22px, 38px, -16px, $azure);
+            @include elipseLeft (22px, 22px, 38px, -16px);
         }
         .elipse2 {
-            @include elipseLeft (11px, 11px, 58px, 10px, $azure);
+            @include elipseLeft (11px, 11px, 58px, 10px);
         }
         .elipse3 {
-            @include elipseRight (33px, 33px, 9px, -25px, $azure);
+            @include elipseRight (33px, 33px, 9px, -25px);
         }
         .elipse4 {
-            @include elipseRight (7px, 7px, 45px, -3px, $navyBlue);
+            @include elipseRight (7px, 7px, 45px, -3px);
         }
         .elipse5 {
-            @include elipseRight (15px, 15px, 69px, -20px, $lime);
+            @include elipseRight (15px, 15px, 69px, -20px);
         }
     }
 }
 .elipse {
     position: absolute;
+    transition: background-color .5s linear;
     @extend %round;
 }
 .header__box {
@@ -196,16 +207,16 @@ body {
         font-size: $number;
     }
     .about__elipse1 {
-        @include elipseRight (6px, 6px, 0px, 33px, $azure);
+        @include elipseRight (6px, 6px, 0px, 33px);
     }
     .about__elipse2 {
-        @include elipseRight (34px, 34px, 22px, 11px, $navyBlue);
+        @include elipseRight (34px, 34px, 22px, 11px);
     }
     .about__elipse3 {
-        @include elipseRight (17px, 17px, -10px, 2px, $azure);
+        @include elipseRight (17px, 17px, -10px, 2px);
     }
     .about__elipse4 {
-        @include elipseRight (57px, 57px, 4px, -52px, $lime);
+        @include elipseRight (57px, 57px, 4px, -52px);
     }
 }
 .point__paragraph {
@@ -223,16 +234,16 @@ body {
     background-color: $trAzure2;
     padding: 16px;
     .brief__elipse1 {
-        @include elipseRight (32px, 32px, -82px, 15px, $azure);
+        @include elipseRight (32px, 32px, -82px, 15px);
     }
     .brief__elipse2 {
-        @include elipseRight (6px, 6px, -64px, 3px, $navyBlue);
+        @include elipseRight (6px, 6px, -64px, 3px);
     }
     .brief__elipse3 {
-        @include elipseRight (19px, 19px, -40px, -3px, $azure);
+        @include elipseRight (19px, 19px, -40px, -3px);
     }
     .brief__elipse4 {
-        @include elipseRight (10px, 10px,-88px, -10px, $lime);
+        @include elipseRight (10px, 10px,-88px, -10px);
     }
     .brief__title {
         position: relative;
