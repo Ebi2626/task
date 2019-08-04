@@ -42,7 +42,7 @@ function slideEffect() {
 function changingColours() {
     let elipse = document.querySelectorAll(".elipse");
     setInterval(function(){
-        for (let i = 0, max = elipse.length - 1; max; i++){
+        for (let i = 0, max = elipse.length; i < max; i++){
             let name = elipse[i].id;
             let item = document.getElementById(name);
             let x = item.classList.contains("azure");
@@ -81,7 +81,13 @@ function mouseParallax() {
     });
 };
 
-
+function navback() {
+    if (window.innerWidth > 470) {
+        document.getElementById("wrapper").style.right = "0"
+    } else {
+        return
+    }
+};
 
 
 
@@ -89,3 +95,4 @@ function mouseParallax() {
 window.addEventListener('DOMContentLoaded', listeners);
 window.addEventListener('DOMContentLoaded', changingColours);
 window.addEventListener('mousemove', mouseParallax);
+window.addEventListener('resize', navback);

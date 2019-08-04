@@ -104,41 +104,18 @@ body {
     width: $basicWidth;
     background-color: white;
     height: 260px;
-    .header__backgroundText, .header__backgroundText--littler, .header__backgroundText--mini {
-        color: $bgBlue;
-        display: inline-block;
-        position: absolute;
-        width: auto;
-        z-index: 1;
-    }
-    .header__backgroundText {
-        letter-spacing: 7px;
-        font-size: 32px;
-        top: 0px;
-        font-weight: 900;
-        z-index: 1;
-    }
-    .header__backgroundText--littler {
-        font-size: 18px;
-        letter-spacing: 2px;
-        font-weight: bolder;
-        left: 129px;
-        top: 44px;
-        z-index: 1;
-    }
-    .header__backgroundText--mini {
-        letter-spacing: 2px;
-        font-size: 13px;
-        font-weight: 400;
-        top: 64px;
-        left: 129px;
-        z-index: 1;
-    }
+    justify-content: center;
     .header__graphics {
         position: absolute;
         top: 0px;
-        width: 100%;
+        width: 290px;
+        margin-left: -5vw;
         z-index: 2;
+        .header__img {
+            position: absolute;
+            width: 320px;
+
+        }
         .elipse1 {
             @include elipseLeft (22px, 22px, 38px, -16px);
         }
@@ -160,30 +137,6 @@ body {
     position: absolute;
     transition: background-color .5s linear;
     @extend %round;
-}
-.header__box {
-    position: relative;
-    padding: 18px;
-    top: - 81px;
-    @extend %flexColumn;
-    width: $basicWidth2;
-    background-color: $trAzure;
-    .header__text {
-        margin-bottom: 20px;
-        color: $navyBlue;
-    }
-    .header__text--bolder {
-        font-size: 20px;
-        font-weight: bolder;
-    }
-    .header__text--thinner {
-        font-size: 20px;
-        font-weight: 300;
-    }
-    .header__text--little {
-        font-size: 13px;
-        font-weight: bolder;
-    }
 }
 .point {
     width: $basicWidth;
@@ -332,6 +285,31 @@ body {
 
 /* Media queries */
 
+/* Very little phones and similar devices pretendent to be smartphone */
+@media #{$calculator} {
+    .header__main {
+        width: 100vw !important;
+        .header__graphics {
+            width: 90%;
+            margin-left: -5vw;
+            .elipse1 {
+                top: 25px;
+                left: calc(-6px + 5vw);
+            }
+            .elipse2 {
+                top: 48px;
+                left: calc(20px + 5vw);
+            }
+            .header__img {
+                left: 5vw;
+                width: 100%;
+                height: auto;
+    
+            }
+        }
+    }
+}
+
 /* Large phones and small tablets */
 @media #{$phone}{
     .nav {
@@ -352,6 +330,7 @@ body {
         align-items: center;
         max-width: 602px;
         width: 100%;
+        right: 0px;
         justify-content: flex-start;
         .nav__item {
             display: inline-flex;
