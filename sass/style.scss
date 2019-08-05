@@ -30,19 +30,24 @@ body {
     margin: 0px auto 30px auto;
     text-align: center;
     .nav__logo {
-        width: 50px;
-        height: 50px;
-        background-color: wheat;
+        width: 60px;
+        height: 60px;
         .nav__img {
             position: relative;
-            width: 44px;
+            width: 50px;
             height: auto;
-            background-color: $azure;
             border-radius: 50%;
         }
     }
     .nav__toggler {
         width: 27px;
+        transition: all .2s ease-in-out;
+        &:hover, &:active {
+            transform: scale(1.1);
+            .nav__line {
+                background-color: $lime;
+            }
+        }
         .nav__line {
             margin-bottom: 5px;
             margin-left: auto;
@@ -60,7 +65,15 @@ body {
         padding-left: 40px;
         transition: right .3s ease-in-out;
         display: none;
-    }
+        .nav__item {
+            .nav__link {
+                    transition: transform .3s ease-in-out;
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                }
+            }
+        }
     .nav__wrapper--active {
         position: fixed !important;
         @extend %flexColumn;
@@ -89,21 +102,26 @@ body {
                 transition: all .2s ease-in-out;
                 &:hover, &:active {
                     color: $azure;
-
+                }
+                .nav__icon {
+                    transition: transform .3s ease-in-out;
+                    &:hover {
+                        transform: scale(1.1);
+                    }
                 }
             }
         }
     }
 }
 .header {
-    height:330px;
+    height:360px;
+    margin-bottom: 18px;
 }
 .header__main {
     position: relative;
     @extend %flexRow;
     width: $basicWidth;
     background-color: white;
-    height: 260px;
     justify-content: center;
     .header__graphics {
         position: absolute;
@@ -117,10 +135,10 @@ body {
 
         }
         .elipse1 {
-            @include elipseLeft (22px, 22px, 38px, -16px);
+            @include elipseLeft (22px, 22px, 38px, 0px);
         }
         .elipse2 {
-            @include elipseLeft (11px, 11px, 58px, 10px);
+            @include elipseLeft (11px, 11px, 58px, 26px);
         }
         .elipse3 {
             @include elipseRight (33px, 33px, 9px, -25px);
@@ -133,6 +151,9 @@ body {
         }
     }
 }
+.main {
+    margin-bottom: 120px;
+}
 .elipse {
     position: absolute;
     transition: background-color .5s linear;
@@ -144,6 +165,14 @@ body {
     margin-right: auto;
     &:nth-child(2) {
         margin-bottom:86px;
+        .point__header {
+         .point__title, .point__number {
+             color: $navyBlue;
+         }   
+         .point__number--2:before {
+             z-index:-1;
+         }
+        }
     }
 }
 .point__header {
@@ -151,14 +180,31 @@ body {
     @extend %flexRow;
     justify-content: space-between;
     color: $azure;
+    text-align: right;
     align-items: baseline;
     .point__title {
         font-size: $text;
-        
     }
     .point__number {
+        position: relative;
+        font-family: Ultra;
         font-size: $number;
     }
+    .point__number--1:before, .point__number--2:before {
+        content: "";
+        position: absolute;
+        height: 2px;
+        width: 90vw;
+        top: 56px;
+         }
+        .point__number--1:before{
+            left: -10px;
+            background-image: $azureGradient;
+        }
+        .point__number--2:before {
+            right: -10px;
+            background-image: $revAzureGradient;
+        }
     .about__elipse1 {
         @include elipseRight (6px, 6px, 0px, 33px);
     }
@@ -178,6 +224,43 @@ body {
     font-weight: bold;
     color: $navyBlue;
     text-align: center;
+    padding: 10px;
+}
+.about__pictures {
+    position: relative;
+    height: 200px;
+    width: 100vw;
+    margin-left: -5vw;
+    .about__img {
+        position: absolute;
+        height: auto;
+        max-width: 200px;
+        &--bg, &--1, &--2 {
+            left: 0px;
+            width: 45vw;
+            top: 10px;
+        }
+        &--bg {
+            z-index: 1;
+        }
+        &--1 {
+            z-index: 2;
+        }
+        &--2 {
+            z-index: 3;
+        }
+        &--3 {
+            top: 80px;
+            left: 45vw;
+            width: 20vw;
+            max-width: 90px;
+        }
+        &--4 {
+            left: 65vw;
+            width: 35vw;
+            max-width: 150px;
+        }
+    }
 }
 .brief {
     position: relative;
@@ -202,8 +285,9 @@ body {
         position: relative;
         margin-top: 50px;
         font-size: 30px;
-        color: $azure;
-        font-weight: bold;
+        color: $navyBlue;
+        font-family: Ultra;
+        font-weight: 300;
         margin-bottom: 50px;
         &:before {
             content:" ";
@@ -212,18 +296,29 @@ body {
             width: 75px;
             position: absolute;
             bottom: 50px;
-            left: 10px;
+            left: 0px;
         }
     }
     .brief__paragraph {
         color: $navyBlue;
         font-size: 14px;
         line-height: 24px;
-        margin-bottom: 20px;
-
+        margin-bottom: 40px;
+        &:nth-child(2) {
+            margin-bottom: 185px;
+        }
     }
     .brief__header {
         position: relative;
+    }
+    .brief__photo {
+        position: absolute;
+        margin-top: -145px;
+        left: 50%;
+        transform: translateX(-50%);
+        .breif__img {
+            left: 0px;
+        }
     }
 }
 .contact {
@@ -268,9 +363,8 @@ body {
             align-items: center;
             .contact__icon {
                 @extend %round;
-                height: 40px;
-                width: 40px;
-                background-color: $azure;
+                height: 80px;
+                width: 80px;
             }
             .contact__text {
                 color: $pink;
@@ -307,6 +401,14 @@ body {
     
             }
         }
+    }
+    .brief__photo {
+        width: 90%;
+        margin: 0px auto;
+    }
+    .brief__img {
+        width: 100% !important;
+        height: auto !important;
     }
 }
 
@@ -357,7 +459,6 @@ body {
                 margin-left: auto;
                 padding: 4px;
                 margin-right: 0px;
-                background-color: $azure;
             }
             .nav__link {
                 text-decoration: none;
@@ -374,27 +475,76 @@ body {
     }
 }  
 .header {
-    height: 500px;
+    height: 80vw !important;
+    max-height: 500px !important;
+    
 }
 .header__main {
     width: 90%;
     max-width: 642px;
     margin: 0px auto;
     height: 500px; 
+    .header__graphics {
+        margin-left: 0px;
+        width: 70%;
+        .header__img {
+            width: 100%;
+            height: auto;
+        }
+    }
 }
 .header__box {
     width: calc(90% - 90px);
     margin-left: 45px;
     max-width: 430px;
 }
+.elipse1 {
+    top: calc(38px + 1vw) !important;
+    left: 6px !important;
+}
+.elipse2 {
+    top: calc(58px + 1vw) !important;
+    left: 30px !important;
+}
+.elipse3 {
+    top: calc(9px + 1vw) !important;
+    right: 0px !important;
+}
+.elipse4 {
+    top: calc(45px + 1vw) !important;
+    right: 25px !important;
+}
+.elipse5 {
+    top: calc(69px + 1vw) !important;
+    right: 6px !important;
+}
 .point {
-    max-width: $maxWidthPhone;
+    max-width: 80%;
     .point__paragraph {
         width: 240px;
         margin-top: -10px;
         margin-left: auto;
         margin-right: -10px;
         text-align: left;
+}
+.about__pictures {
+    margin-left: -10vw !important;
+    margin-bottom: 10vw !important;
+    .about__img {
+        position: absolute;
+        max-width: 250px;
+        &--3 {
+            top: calc(80px + 3vw) !important;
+            left: 45vw;
+            width: 20vw;
+            max-width: 120px;
+        }
+        &--4 {
+            left: 65vw;
+            width: 35vw;
+            max-width: 180px;
+        }
+    }
 }
 }
 .point:nth-child(2) {
@@ -424,8 +574,13 @@ body {
 }
 .point {
     max-width: 600px;
+    .point__header {
+    }
     .point__number {
         font-size: $numberTablet;
+        &--1:before, &--2:before {
+            top: 76px;
+        }
     }
     .point__title {
         font-size: $textDesktop;
@@ -465,10 +620,139 @@ body {
     .nav__logo {
         margin-left: -20px;
     }
+    .main {
+        width: 80vw;
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
     .point {
-        max-width: $basicWidth;
+        display: block;
+        max-width: 800px;
+        &__header {
+            width: 800px;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .point__paragraph {
+            font-size: 14px;
+            width: 400px;
+            transform: translateY(-50px);
+            
+        }
+        &:nth-child(1) {
+            margin-left: 0px !important;
+            .point__header {
+                margin-left: 0px;
+                .elipse {
+                    transform: translate(50px, 80px);
+                }
+            }
+            .point__title {
+                transform: translateY(-20px);
+            }
+            .point__paragraph {
+               
+            }
+        }
+        &:nth-child(2) {
+            margin-top: -350px;
+            margin-right: 0px !important;
+            .point__header {
+                width: 40vw;
+                max-width: 600px;
+                margin-right: 0px;
+            }
+            .point__title {
+                transform: translateY(-20px);
+            }
+            .point__paragraph {
+                margin-right: 200px;
+                width: 300px;
+                margin-left: auto;
+            }
+
+        }
         .point__number {
             font-size: $numberDesktop;
+            &--1:before {
+                width: 800px;
+                top: 108px;
+            }
+            &--2:before{
+                width: 400px;
+                top: 108px;
+            }
+        
         }
+        .about__pictures {
+            display: inline-block;
+            margin-left: 0px !important;
+            transform: translateX(-50px);
+            margin-bottom: 0px;
+            width: 300px;
+            .about__img {
+                &--bg, &--1, &--2 {
+                    left: 150px;
+                    top: 5px;
+                }
+                &--3 {
+                    left: 70px !important;
+                    top: 5px !important;
+                }
+                &--4 {
+                    top: 70px;
+                    left: -50px;
+                    width: 200px;
+                }
+            }
+        }
+    }
+    .brief {
+        position: relative;
+        max-width: 1400px !important;
+        height: 450px;
+        width: 100vw !important;
+        margin-left: -10vw !important;
+        .brief__header {
+            width: 30vw;
+            max-width: 300px;
+            left: 40%;
+            transform: translateX(-300px);
+            .brief__title:before {
+                left: -20px;
+            }
+        }
+        &__describe {
+            position: relative;
+            width: 40vw;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: 10vw;
+            margin-top: -100px;
+            .brief__photo {
+                position: relative;
+                transform: translateX(-400px);
+                left: 0px;
+                margin-top: -350px;
+            }
+
+        }
+    }
+    .contact__container {
+        max-width: 1100px;
+    }
+
+}
+// Huge esktops
+@media #{$hugeDesktop}{
+    .brief {
+        position: relative;
+        max-width: 2000px !important;
+        height: 450px;
+        width: 100vw !important;
+        margin-left: -10vw;
+        left: 50%;
+        transform: translateX(-40%);
     }
 }
