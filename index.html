@@ -16,21 +16,22 @@
                 <div class="nav__line" id="l3"></div>
             </div>
             <ul class="nav__wrapper" id="wrapper">
-                <li class="nav__item"><a href="" class="nav__link">JAK DZIAŁAMY</a></li>
-                <li class="nav__item"><a href="" class="nav__link">O NAS</a></li>
-                <li class="nav__item"><a href="" class="nav__link">KONTAKT</a></li>
+                <li class="nav__item"><a href="#work" class="nav__link">JAK DZIAŁAMY</a></li>
+                <li class="nav__item"><a href="#about" class="nav__link">O NAS</a></li>
+                <li class="nav__item"><a href="#contact" class="nav__link">KONTAKT</a></li>
                 <li class="nav__item"><a href="" class="nav__link"><img src="/img/fb.png" alt="logo facebook" class="nav__icon"></a></li>
             </ul>
         </nav>
         <header class="header">
             <div class="header__main">
                 <div class="header__graphics">
-                    <img src="/img/header-img.png" alt="rodzinka" class="header__img">
+                    <img src="/img/header-img.png" alt="rodzinka" id="header" class="header__img">
                     <div id="el1" class="elipse elipse1 azure"></div>
                     <div id="el2" class="elipse elipse2 azure"></div>
                     <div id="el3" class="elipse elipse3 azure"></div>
-                    <div id="el4" class="elipse elipse4 navyBlue"></div>
-                    <div id="el5" class="elipse elipse5 lime"></div>
+                    <div id="el4" class="elipse elipse4 azure"></div>
+                    <div id="el5" class="elipse elipse5 navyBlue"></div>
+                    <div id="el6" class="elipse lime invisibleElipse"></div>
                 </div>
             </div>
         </header>
@@ -41,12 +42,12 @@
                         <div class="elipse about__elipse2 azure" id="ael2"></div>
                         <div class="elipse about__elipse3 navyBlue" id="ael3"></div>
                         <div class="elipse about__elipse4 lime" id="ael4"></div>
+                        <img src="/img/dad.png" alt="mężczyzna" class="about__dad">
+                        <img src="/img/kid.png" alt="dziecko" class="about__kid">
                         <P class="point__number point__number--1">01</P>
-                        <h3 class="point__title"> KIM JESTEŚMY I CO ROBIMY?</h3>
+                        <h3 class="point__title" id="work"> KIM JESTEŚMY I CO ROBIMY?</h3>
                     </header>
                         <div class="point__paragraph">Ubrania do oddania to portal fundraisingowy. Naszym głównym zadaniem jest POMAGANIE. Pomaganie przez ubranie!</div>
-                                
-                            
                 <div class="about__pictures">
                     <img src="/img/woman_bg.png" alt="tło" class="about__img about__img--bg">
                     <img src="/img/woman_1.png" alt="kobieta" class="about__img about__img--1">
@@ -62,24 +63,31 @@
                 </header>
                     <div class="point__paragraph">Ubrania do oddania to portal fundraisingowy. Naszym głównym zadaniem jest POMAGANIE. Pomaganie przez ubranie!</div>
             </section>
-            <article class="brief">
+            <section class="box">
+            <div class="brief">
                 <header class="brief__header">
                         <div class="elipse brief__elipse1 azure" id="bel1"></div>
                         <div class="elipse brief__elipse2 navyBlue" id="bel2"></div>
                         <div class="elipse brief__elipse3 azure" id="bel3"></div>
-                        <div class="elipse brief__elipse4 lime" id="bell4"></div>
+                        <div class="elipse brief__elipse4 lime" id="bel4"></div>
+                        <div class="elipse brief__elipse--desktop1 navyBlue" id="belD1"></div>
+                        <div class="elipse brief__elipse--desktop2 azure" id="belD2"></div>
+                        <div class="elipse brief__elipse--desktop3 azure" id="belD3"></div>
+                        <div class="elipse brief__elipse--desktop4 navyBlue" id="belD4"></div>
+                        <div class="elipse brief__elipse--desktop5 lime" id="belD5"></div>
                     <h3 class="brief__title">W SKRÓCIE...</h3>
                 </header>
-                    <section class="brief__describe">
+                    <article class="brief__describe" id="about">
                         <p class="brief__paragraph">Projekt <strong>Ubrania do oddania</strong> został założony przez trójkę znajomych, którzy swój pomysł oparli o własne doświadczenia z różnych branż oraz wcześniejszą współpracę ze światem organizacji charytatywnych zarówno w Polsce, jak i za granicą. Stworzyli innowacyjny i alternatywny wobec m.in. kontenerowych zbiórek ubrań, portal fundraisingowy. Umozliwia on zamianę niepotrzebnych ubrań w realną pomoc finansową, która w całości przekazywana jest na wybrany przez Darczyńcę szczytny cel, taki jak operacja chorego, czy dom dla porzucnego zwierzaka.</p>
                         <p class="brief__paragraph"><strong>Ubrania do oddania</strong> to pierwszy taki projekt nie tylko w Polsce, ale i na świecie. Przyświecają mu dwa główne cele: pomaganie Potrzebującym i ekologia. Portal ten powstał z myślą o Organizacjach charytatywnych i ich Podopiecznych, ale również o osobach, które kilka razy w ciągu roku zastanawiają się jak w rozsądny sposób pozbyć się zalegających czy niepotrzebnych ubrań jednocześnie odkrywając "Radość pomagania!".</p>
                         <div class="brief__photo"><img src="./img/hands.png" alt="obejmujące się trzy ręce" class="brief__img"></div>
-                    </section>
-            </article>
+                    </article>
+            </div>
+        </section>
         </main>
             <footer class="contact">
                 <header class="contact__header">
-                    <h3 class="contact__title">JAK MOŻESZ POMÓC?</h3>
+                    <h3 class="contact__title" id="contact">JAK MOŻESZ POMÓC?</h3>
                     <p class="contact__paragraph"><span class="contact__paragraph--bolder">ZAANGAŻOWANIEM.</span><br> Spotkajmy się i porozmawiajmy!</p>
                 </header>
                 <div class="contact__container">

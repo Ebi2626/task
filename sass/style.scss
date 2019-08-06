@@ -4,7 +4,9 @@
 @import "animations";
 @import "variables";
 @import "extends";
-
+html {
+scroll-behavior: smooth;
+}
 * {
     box-sizing: border-box;
     margin: 0px;
@@ -149,6 +151,10 @@ body {
         .elipse5 {
             @include elipseRight (15px, 15px, 69px, -20px);
         }
+        .invisibleElipse {
+            @include elipseRight(0px, 0px, 0px, 0px);
+            display: none;
+        }
     }
 }
 .main {
@@ -156,7 +162,7 @@ body {
 }
 .elipse {
     position: absolute;
-    transition: background-color .5s linear;
+    transition: background-color .5s linear, transform .2s linear;
     @extend %round;
 }
 .point {
@@ -182,6 +188,9 @@ body {
     color: $azure;
     text-align: right;
     align-items: baseline;
+    .about__dad, .about__kid {
+        display: none;
+    }
     .point__title {
         font-size: $text;
     }
@@ -280,6 +289,27 @@ body {
     }
     .brief__elipse4 {
         @include elipseRight (10px, 10px,-88px, -10px);
+    }
+    .brief__elipse--desktop1, .brief__elipse--desktop2, .brief__elipse--desktop3, .brief__elipse--desktop4, .brief__elipse--desktop5 {
+        display: none;
+    }
+    .brief__elipse--desktop1 {
+        left: 30px;
+    }
+    .brief__elipse--desktop2 {
+        margin-top: -10px;
+        left: 60px;
+    }
+    .brief__elipse--desktop3 {
+        top: 20px;
+        left: -40px;
+    }
+    .brief__elipse--desktop4 {
+        margin-top: 10px;
+        left: 50px;
+    }
+    .brief__elipse--desktop5 {
+        left: - 10px;
     }
     .brief__title {
         position: relative;
@@ -401,6 +431,10 @@ body {
     
             }
         }
+    }
+    .brief__title {
+        font-size: 24px !important;
+        font-weight: 400 !important;
     }
     .brief__photo {
         width: 90%;
@@ -574,8 +608,6 @@ body {
 }
 .point {
     max-width: 600px;
-    .point__header {
-    }
     .point__number {
         font-size: $numberTablet;
         &--1:before, &--2:before {
@@ -610,7 +642,7 @@ body {
 // Desktops
 @media #{$desktop}{
     .nav {
-        margin-bottom: 30px;
+        margin-bottom: 0px;
         height: 95px;
         transform: translateX(-20px);
     }
@@ -619,6 +651,59 @@ body {
     }
     .nav__logo {
         margin-left: -20px;
+    }
+    .header {
+        display: block;
+        min-height: 350px;
+        height: 40vw !important;
+        max-height: 550px;
+        min-width: 700px;
+        width: 80vw;
+        max-width: 1000px;
+        margin: 0px auto;
+        &__main {
+            width: 100%;
+            height: auto;
+            max-width: 1000px;
+        }
+        &__img {
+            min-width: 600px;
+        }
+        &__graphics {
+            width: 100% !important;
+            max-width: 1000px;
+            min-width: 670px;
+            .elipse1 {
+                left: 140px !important;
+                top: 140px !important;
+                      }
+            .elipse2 {
+                left: 170px !important;
+                top: 165px !important;
+                       }
+            .elipse3 {
+                right: 200px !important;
+                top: 130px !important;
+                z-index: -1 !important;
+                        }
+            .elipse4 {
+                right: 160px !important;
+                top: 120px !important;
+                width: 11px !important;
+                height: 11px !important;
+                      }
+            .elipse5 {
+                top: 175px !important;
+                right: 175px !important;
+            }
+            .invisibleElipse {
+                display: inline-block !important;
+                top: 150px !important;
+                right: 180px !important;
+                width: 8px !important;
+                height: 8px !important;
+            }
+        }
     }
     .main {
         width: 80vw;
@@ -633,6 +718,22 @@ body {
             width: 800px;
             align-items: center;
             justify-content: space-around;
+            .about__dad {
+                top: 45px;
+                width: 70px;
+                transform: translateX(460px);
+            }
+            .about__kid {
+                width: 120px;
+                top: 120px;
+                transform: translateX(470px);
+            }
+            .about__dad, .about__kid {
+                position: absolute;
+                display: inline-block;
+                z-index: 5;
+                height: auto;
+            }
         }
         .point__paragraph {
             font-size: 14px;
@@ -650,9 +751,6 @@ body {
             }
             .point__title {
                 transform: translateY(-20px);
-            }
-            .point__paragraph {
-               
             }
         }
         &:nth-child(2) {
@@ -719,6 +817,41 @@ body {
             max-width: 300px;
             left: 40%;
             transform: translateX(-300px);
+            .elipse {
+                transform: translate(50vw, 350px);
+            }
+            .brief__elipse--desktop1, .brief__elipse--desktop2, .brief__elipse--desktop3, .brief__elipse--desktop4, .brief__elipse--desktop5 {
+                display: inline-block;
+                transform: translateX(-100px) !important;
+                width: 20px;
+                height: 20px;
+            }
+            .brief__elipse--desktop1 {
+                top: -20px;
+                width: 10px;
+                height: 10px;
+            }
+            .brief__elipse--desktop2 {
+                top: 10px;
+                width: 15px;
+                height: 15px;
+            } 
+            .brief__elipse--desktop3 {
+                top: 15px;
+                width: 117px;
+                height: 117px;
+
+            }
+            .brief__elipse--desktop4 {
+                top: 70px;
+                width: 46px;
+                height: 46px;
+            }
+            .brief__elipse--desktop5 {
+                top: 150px;
+                width: 39px;
+                height: 39px;
+            }
             .brief__title:before {
                 left: -20px;
             }
@@ -728,7 +861,7 @@ body {
             width: 40vw;
             max-width: 600px;
             margin-left: auto;
-            margin-right: 10vw;
+            margin-right: 15vw;
             margin-top: -100px;
             .brief__photo {
                 position: relative;
@@ -746,13 +879,29 @@ body {
 }
 // Huge esktops
 @media #{$hugeDesktop}{
+    .box {
+        max-width:2000px;
+        margin: 0px auto;
+    }
     .brief {
         position: relative;
-        max-width: 2000px !important;
         height: 450px;
         width: 100vw !important;
         margin-left: -10vw;
-        left: 50%;
-        transform: translateX(-40%);
+        .brief__header {
+            .elipse {
+                transform: translate(700px, 350px);
+            }
+            .about__dad, .about__kid {
+                transform: translateX(900px);
+            }
+            
+        }
+        &__describe {
+           left: 5vw;
+            .brief__photo {
+                transform: translateX(-450px);
+            }
+        }
     }
 }
