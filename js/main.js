@@ -9,13 +9,12 @@ that they should speak for their own */
 
 /* I still work on this project */
 
-
 function headImgChanger () {
     if (window.innerWidth >= 1024) {
-        document.getElementById('header').src = "/img/header-img-desktop.png";
-        document.getElementById('logo').src = "/img/logo-desktop.png"
+        document.getElementById('header').src = "./img/header-img-desktop.png";
+        document.getElementById('logo').src = "./img/logo-desktop.png"
     } else {
-        document.getElementById('header').src = "/img/header-img.png";
+        document.getElementById('header').src = "./img/header-img.png";
     };
 };
 function toggle () {
@@ -211,8 +210,10 @@ function showCookie(name) {
         }
     }
 }
+
 /* This unlucky script still waiting for his great day*/
 /*window.addEventListener('DOMContentLoaded', setColours)*/
+
 window.addEventListener('DOMContentLoaded', changingColours);
 window.addEventListener('DOMContentLoaded', headImgChanger);
 window.addEventListener('resize', navback);
