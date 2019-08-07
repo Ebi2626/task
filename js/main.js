@@ -1,6 +1,14 @@
 import "../sass/style.scss";
 import smoothscroll from 'smoothscroll-polyfill';
 smoothscroll.polyfill();
+/* This script I was writing in specific order.
+At the beginning there are functions with their initializations.
+At the end there are event listeners which launch each function.
+I didn't prepare much comments, because I have been trying to use such names for function
+that they should speak for their own */
+
+/* I still work on this project */
+
 
 function headImgChanger () {
     if (window.innerWidth >= 1024) {
@@ -31,7 +39,6 @@ function listeners () {
     window.addEventListener('mousemove', mouseParallax);
 } else {
     window.removeEventListener('mousemove', mouseParallax);
-    window.removeEventListener('mousemove', paralaksa);
     return
 };
 };
@@ -90,7 +97,11 @@ function changingColours() {
 }
 function mouseParallax() {
    let screenx = window.innerWidth,
-    screeny = window.innerHeight;
+   screeny = window.innerHeight;
+    window.onresize = function() {
+        screenx = window.innerWidth;
+        return screenx
+    };
     if (screenx < 1024){
         window.removeEventListener('mousemove', paralaksa);
     } else {
@@ -138,7 +149,7 @@ function mouseParallax() {
                     document.getElementById(el).style.transform = "translate("+Math.round(moveX*10)+"px, "+Math.round(moveY*10)+"px)";
                 });
             } else {
-                console.log("środek ekranu");
+                return
             }
         });
     };
@@ -152,28 +163,36 @@ function navback() {
     }
 };
 function cookie (name) {
-    console.log("działa");
     let colour = [];
     document.querySelectorAll('.elipse').forEach(function(el){
         let klasa = document.getElementById(el.id).classList.value;
         colour.push(klasa);
        return colour;
     });
-    console.log(colour);
     const cookieName = encodeURIComponent(name);
     const cookieVal = encodeURIComponent(colour);
     document.cookie = cookieName+"=" + cookieVal;
 }
+/* Script to fixed
 function setColours() {
-    if (document.cookie.con)
+    let counting = 0;
+
+    if (document.cookie.indexOf('cookie_name=') == -1){
+        let classArray = showCookie('Elipsy');
+        classArray = classArray.split(/,|;/g);
+        let newValue = [];
     document.querySelectorAll('.elipse').forEach(function(e){
+        counting;
         let el = e.id;
-        let classArray = showCookie('Elipsy', e).replace(",", " ");
-        document.getElementById(el).className = classArray;
-        console.log(e.classArray);
-        console.log(showCookie('Elipsy', 0));
-    })
-}
+        newValue[counting] = classArray[counting];
+        document.getElementById(el).className = newValue[counting];
+        counting++;
+    });
+} else {
+    return
+};
+};
+*/
 function deleteCookie(name) {
     const cookieName = encodeURIComponent(name);
     document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
@@ -187,12 +206,13 @@ function showCookie(name) {
             const cookieName = cookies[i].split("=")[0];
             const cookieVal = cookies[i].split("=")[1];
             if (cookieName === decodeURIComponent(name)) {
-                return decodeURIComponent(cookieVal[i]);
+                return decodeURIComponent(cookieVal);
             }
         }
     }
 }
-window.addEventListener('DOMContentLoaded', setColours)
+/* This unlucky script still waiting for his great day*/
+/*window.addEventListener('DOMContentLoaded', setColours)*/
 window.addEventListener('DOMContentLoaded', changingColours);
 window.addEventListener('DOMContentLoaded', headImgChanger);
 window.addEventListener('resize', navback);
