@@ -32,8 +32,6 @@ body {
     margin: 0px auto 30px auto;
     text-align: center;
     .nav__logo {
-        width: 60px;
-        height: 60px;
         .nav__img {
             position: relative;
             width: 50px;
@@ -175,9 +173,6 @@ body {
          .point__title, .point__number {
              color: $navyBlue;
          }   
-         .point__number--2:before {
-             z-index:-1;
-         }
         }
     }
 }
@@ -294,22 +289,22 @@ body {
         display: none;
     }
     .brief__elipse--desktop1 {
-        left: 30px;
+        left: -70px;
     }
     .brief__elipse--desktop2 {
         margin-top: -10px;
-        left: 60px;
+        left: -40px;
     }
     .brief__elipse--desktop3 {
         top: 20px;
-        left: -40px;
+        left: -140px;
     }
     .brief__elipse--desktop4 {
         margin-top: 10px;
-        left: 50px;
+        left: -50px;
     }
     .brief__elipse--desktop5 {
-        left: - 10px;
+        left: - 110px;
     }
     .brief__title {
         position: relative;
@@ -643,7 +638,7 @@ body {
 @media #{$desktop}{
     .nav {
         margin-bottom: 0px;
-        height: 95px;
+        height: 110px;
         transform: translateX(-20px);
     }
     .nav__wrapper {
@@ -651,6 +646,9 @@ body {
     }
     .nav__logo {
         margin-left: -20px;
+        .nav__img {
+            width: 90px !important;
+        }
     }
     .header {
         display: block;
@@ -682,24 +680,24 @@ body {
                 top: 165px !important;
                        }
             .elipse3 {
-                right: 200px !important;
+                right: 175px !important;
                 top: 130px !important;
                 z-index: -1 !important;
                         }
             .elipse4 {
-                right: 160px !important;
+                right: 155px !important;
                 top: 120px !important;
                 width: 11px !important;
                 height: 11px !important;
                       }
             .elipse5 {
                 top: 175px !important;
-                right: 175px !important;
+                right: 165px !important;
             }
             .invisibleElipse {
                 display: inline-block !important;
                 top: 150px !important;
-                right: 180px !important;
+                right: 160px !important;
                 width: 8px !important;
                 height: 8px !important;
             }
@@ -766,6 +764,7 @@ body {
             }
             .point__paragraph {
                 margin-right: 200px;
+                margin-top: 10px;
                 width: 300px;
                 margin-left: auto;
             }
@@ -815,21 +814,31 @@ body {
         .brief__header {
             width: 30vw;
             max-width: 300px;
-            left: 40%;
-            transform: translateX(-300px);
-            .elipse {
-                transform: translate(50vw, 350px);
-            }
-            .brief__elipse--desktop1, .brief__elipse--desktop2, .brief__elipse--desktop3, .brief__elipse--desktop4, .brief__elipse--desktop5 {
+            left: calc(40% - 300px);
+            .disappearing{
                 display: inline-block;
-                transform: translateX(-100px) !important;
-                width: 20px;
-                height: 20px;
+            }
+            .brief__elipse1 {
+                right: calc(15px + (-50vw));
+                top: 318px;
+            }
+            .brief__elipse2 {
+                right: calc(3px + (-50vw)); 
+                top: 346px;
+            }
+            .brief__elipse3 {
+                right: calc(-3px + (-50vw));
+                top: 360px;
+            }
+            .brief__elipse4 {
+                right: calc(-10px + (-50vw));
+                top: 312px;
             }
             .brief__elipse--desktop1 {
-                top: -20px;
+                top: -20px !important;
                 width: 10px;
                 height: 10px;
+
             }
             .brief__elipse--desktop2 {
                 top: 10px;
@@ -840,7 +849,6 @@ body {
                 top: 15px;
                 width: 117px;
                 height: 117px;
-
             }
             .brief__elipse--desktop4 {
                 top: 70px;
@@ -889,9 +897,6 @@ body {
         width: 100vw !important;
         margin-left: -10vw;
         .brief__header {
-            .elipse {
-                transform: translate(700px, 350px);
-            }
             .about__dad, .about__kid {
                 transform: translateX(900px);
             }

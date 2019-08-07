@@ -6,10 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Task</title>
     <link rel="stylesheet" href="style.bundle.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 </head>
 <body>
         <nav class="nav">
-            <div class="nav__logo"><img src="/img/logo.png" alt="logo" class="nav__img"></div>
+            <div class="nav__logo"><img src="/img/logo.png" id="logo" alt="logo" class="nav__img"></div>
             <div class="nav__toggler" id="hamburger">
                 <div class="nav__line" id="l1"></div>
                 <div class="nav__line" id="l2"></div>
@@ -19,7 +20,7 @@
                 <li class="nav__item"><a href="#work" class="nav__link">JAK DZIAŁAMY</a></li>
                 <li class="nav__item"><a href="#about" class="nav__link">O NAS</a></li>
                 <li class="nav__item"><a href="#contact" class="nav__link">KONTAKT</a></li>
-                <li class="nav__item"><a href="" class="nav__link"><img src="/img/fb.png" alt="logo facebook" class="nav__icon"></a></li>
+                <li class="nav__item"><a href="#wrapper" class="nav__link"><img id="fb" src="/img/fb.png" alt="logo facebook" class="nav__icon"></a></li>
             </ul>
         </nav>
         <header class="header">
@@ -66,15 +67,15 @@
             <section class="box">
             <div class="brief">
                 <header class="brief__header">
-                        <div class="elipse brief__elipse1 azure" id="bel1"></div>
-                        <div class="elipse brief__elipse2 navyBlue" id="bel2"></div>
-                        <div class="elipse brief__elipse3 azure" id="bel3"></div>
-                        <div class="elipse brief__elipse4 lime" id="bel4"></div>
-                        <div class="elipse brief__elipse--desktop1 navyBlue" id="belD1"></div>
-                        <div class="elipse brief__elipse--desktop2 azure" id="belD2"></div>
-                        <div class="elipse brief__elipse--desktop3 azure" id="belD3"></div>
-                        <div class="elipse brief__elipse--desktop4 navyBlue" id="belD4"></div>
-                        <div class="elipse brief__elipse--desktop5 lime" id="belD5"></div>
+                        <div class="elipse brief__elipse1 nondisappearing azure" id="bel1"></div>
+                        <div class="elipse nondisappearing brief__elipse2 navyBlue" id="bel2"></div>
+                        <div class="elipse nondisappearing brief__elipse3 azure" id="bel3"></div>
+                        <div class="elipse nondisappearing brief__elipse4 lime" id="bel4"></div>
+                        <div class="elipse disappearing brief__elipse--desktop1 navyBlue" id="belD1"></div>
+                        <div class="elipse disappearing brief__elipse--desktop2 azure" id="belD2"></div>
+                        <div class="elipse disappearing brief__elipse--desktop3 azure" id="belD3"></div>
+                        <div class="elipse disappearing brief__elipse--desktop4 navyBlue" id="belD4"></div>
+                        <div class="elipse disappearing brief__elipse--desktop5 lime" id="belD5"></div>
                     <h3 class="brief__title">W SKRÓCIE...</h3>
                 </header>
                     <article class="brief__describe" id="about">
