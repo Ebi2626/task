@@ -1,13 +1,14 @@
 import "../sass/style.scss";
 import smoothscroll from 'smoothscroll-polyfill';
 smoothscroll.polyfill();
-/* This script I was writing in specific order.
-At the beginning there are functions with their initializations.
-At the end there are event listeners which launch each function.*/
+/* This script I was writing in a specific order.
+In the beginning, there are functions with their initializations.
+In the end, there are event listeners which launch each function.*/
+
 
 /* I still work on this project */
 
-// This is modal with newsletter popup
+// This is modal with a newsletter popup
 
 function popup () {
     const modal = document.querySelector("#modal"),
@@ -15,19 +16,24 @@ function popup () {
     modalInput = document.querySelector("#modalInput"),
     newsletter = document.querySelector("#newsletter");
     function popupClose() {
-        modal.classList.remove("modal--active");
+                let rezygnacja = "osoba odrzucająca newsletter";
+                rezygnacja = encodeURIComponent(rezygnacja);
+                document.cookie = "Mail="+rezygnacja;
+                modal.classList.remove("modal--active");
+    };
+    modalClose.addEventListener('click', popupClose);
+    newsletter.addEventListener('submit', function(e){
+        e.preventDefault();
         if (modalInput.value != 0){
             const securedMail = encodeURIComponent(modalInput.value);
            document.cookie = "Mail="+securedMail;
-        } 
-            else {
+        }  else {
                 let rezygnacja = "osoba odrzucająca newsletter";
                 rezygnacja = encodeURIComponent(rezygnacja);
                 document.cookie = "Mail="+rezygnacja;
             }
-    };
-    modalClose.addEventListener('click', popupClose);
-    newsletter.addEventListener('submit', popupClose);
+            modal.classList.remove("modal--active");
+    });
 
     // Veryfing if someone has chance to subscribe
     // Popup won't show again
@@ -38,7 +44,7 @@ function popup () {
         modal.classList.add("modal--active");
     }, 1000);
    };
-}
+;}
 
 // Popup displaying after clic on the contact
 function contactPopUp(){
@@ -59,7 +65,7 @@ function contactPopUp(){
         message.content = content;
         // Function which validate of inputs data correctness
         // It is based on regular expressions
-        // It create cookie with object named "Wiadomość"
+        // It creates cookie with object named "Wiadomość"
         // instead of sending message
         message.validate = function () {
             let regName = /^[a-zA-Z]{2,30}$/,
@@ -120,7 +126,6 @@ function listeners () {
 } else if (window.innerWidth >= 1024) {
     window.addEventListener('mousemove', mouseParallax);
 } else {
-    window.removeEventListener('mousemove', mouseParallax);
     return
 };
 };
@@ -193,7 +198,7 @@ function mouseParallax() {
         return screenx
     };
     if (screenx < 1024){
-        window.removeEventListener('mousemove', paralaksa);
+        return
     } else {
         window.addEventListener('mousemove', function paralaksa(e) {
             let x = e.clientX,
@@ -209,6 +214,9 @@ function mouseParallax() {
              moveX,
              moveY;
              /* Mouse on right side */
+             if (screenx < 1024) {
+                 return
+             } else {
              if ((poziom > .5) && (pion > .5)) {
                 moveX = -(right/x0);
                 moveY = -(top/y0);
@@ -240,9 +248,10 @@ function mouseParallax() {
                 });
             } else {
                 return
-            }
-        });
-    };
+            };
+        };
+    });
+};
 };
 
 // Function fixed mobile menu animation

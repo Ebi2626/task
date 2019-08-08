@@ -40,8 +40,8 @@ body {
         position: relative;
         width: 100%;
         max-width: 700px;
-        padding: 40px 20px;
-        border-radius: 10px;
+        padding: 20px 20px;
+        border-radius: 0px;
         background-color: white;
         border: solid $navyBlue 1px;
         justify-content: center;
@@ -737,8 +737,9 @@ body {
 }
 // Large tablets and small laptops
 .modal {
-    .inner__modal {
+    &__inner {
         width: 80%;
+        border-radius: 10px;
     }
 }
 @media #{$tablet}{
