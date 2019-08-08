@@ -3,12 +3,88 @@ import smoothscroll from 'smoothscroll-polyfill';
 smoothscroll.polyfill();
 /* This script I was writing in specific order.
 At the beginning there are functions with their initializations.
-At the end there are event listeners which launch each function.
-I didn't prepare much comments, because I have been trying to use such names for function
-that they should speak for their own */
+At the end there are event listeners which launch each function.*/
 
 /* I still work on this project */
 
+// This is modal with newsletter popup
+
+function popup () {
+    const modal = document.querySelector("#modal"),
+    modalClose = document.querySelector("#modalClose"),
+    modalInput = document.querySelector("#modalInput"),
+    newsletter = document.querySelector("#newsletter");
+    function popupClose() {
+        modal.classList.remove("modal--active");
+        if (modalInput.value != 0){
+            const securedMail = encodeURIComponent(modalInput.value);
+           document.cookie = "Mail="+securedMail;
+        } 
+            else {
+                let rezygnacja = "osoba odrzucająca newsletter";
+                rezygnacja = encodeURIComponent(rezygnacja);
+                document.cookie = "Mail="+rezygnacja;
+            }
+    };
+    modalClose.addEventListener('click', popupClose);
+    newsletter.addEventListener('submit', popupClose);
+
+    // Veryfing if someone has chance to subscribe
+    // Popup won't show again
+    if (showCookie("Mail") != undefined){
+        return
+    } else {
+    setTimeout(function() {
+        modal.classList.add("modal--active");
+    }, 1000);
+   };
+}
+
+// Popup displaying after clic on the contact
+function contactPopUp(){
+    const modalContact = document.getElementById('contactModal'),
+    contactClose = document.getElementById("contactModalClose"),
+    form = document.getElementById('form');
+    modalContact.classList.add("modal--active");
+    form.addEventListener('submit', function(e){
+        e.preventDefault();
+        let name = document.getElementById('contactName').value,
+        surName = document.getElementById('contactSurName').value,
+        mail = document.getElementById('contactModalMail').value,
+        content = document.getElementById('contactModalText').value,
+        message = {};
+        message.name = name;
+        message.surName = surName;
+        message.mail = mail;
+        message.content = content;
+        // Function which validate of inputs data correctness
+        // It is based on regular expressions
+        // It create cookie with object named "Wiadomość"
+        // instead of sending message
+        message.validate = function () {
+            let regName = /^[a-zA-Z]{2,30}$/,
+            regMail = /^\S+@\S+\.[A-Za-z]+$/;
+            if (!(regName.test(this.name))) {
+                alert("Wprowadź poprawnie swoje imie")
+            } else if (!(regName.test(this.surName))) {
+                alert("Wprowadź poprawnie swoje nazwisko")
+            } else if (!(regMail.test(this.mail))) {
+                alert ("Wprowadź poprawnie swój adres mailowy")
+            } else if (this.content == 0) {
+                alert("Wprowadź poprawnie treść wiadomości")
+            } else {
+                let messageToSend = encodeURIComponent(message);
+                document.cookie = "Wiadomość="+messageToSend;
+                modalContact.classList.remove('modal--active');
+                alert("Wiadomość wysłano")
+            }
+        };
+      message.validate();
+    });
+    contactClose.onclick = () => modalContact.classList.remove('modal--active');
+};
+
+// Changing header img when window inner width is bigger than 1024px
 function headImgChanger () {
     if (window.innerWidth >= 1024) {
         document.getElementById('header').src = "./img/header-img-desktop.png";
@@ -17,6 +93,8 @@ function headImgChanger () {
         document.getElementById('header').src = "./img/header-img.png";
     };
 };
+
+// Displaying mobile menu when event occur
 function toggle () {
 const wrapper = document.getElementById('wrapper');
 if (wrapper.classList.contains("nav__wrapper--active")) {
@@ -26,9 +104,14 @@ else {
     slideEffect();
 }
 }
+
+// Generl function with listeners.
+// I have prepared it in order to avoid globall variables
 function listeners () {
-    const menu = document.getElementById('hamburger');
+    const menu = document.getElementById('hamburger'),
+    contact = document.getElementById('contact');
     menu.addEventListener('click', toggle, true);
+    contact.addEventListener('click', contactPopUp);
     const menuItem = document.querySelectorAll(".nav__link");
     if (window.innerWidth < 470){
     menuItem.forEach(function (e) {
@@ -41,6 +124,8 @@ function listeners () {
     return
 };
 };
+
+// Function to block scrolling during displaying mobile menu
 function pageBlock() {
     const wrapper = document.getElementById('wrapper');
     if (wrapper.classList.contains("nav__wrapper--active")) {
@@ -49,6 +134,8 @@ function pageBlock() {
         document.body.style.overflowY = "auto";
     }
 }
+
+// Animation for mobile menu
 function slideEffect() {
     const wrapper = document.getElementById('wrapper');
     if (window.innerWidth < 476) {
@@ -69,6 +156,8 @@ function slideEffect() {
         return
     }
 };
+
+//Function to changing colour of elipses
 function changingColours() {
     let elipse = document.querySelectorAll(".elipse");
     setInterval(function(){
@@ -94,6 +183,8 @@ function changingColours() {
         cookie('Elipsy');  
     }, 2500);   
 }
+
+// Function which lets elipses for move oppsite to mouse movement
 function mouseParallax() {
    let screenx = window.innerWidth,
    screeny = window.innerHeight;
@@ -153,6 +244,8 @@ function mouseParallax() {
         });
     };
 };
+
+// Function fixed mobile menu animation
 function navback() {
     if (window.innerWidth > 470) {
         document.getElementById("wrapper").classList.remove("nav__wrapper--active");
@@ -161,6 +254,8 @@ function navback() {
         return
     }
 };
+
+// Function setting cookie with elipses
 function cookie (name) {
     let colour = [];
     document.querySelectorAll('.elipse').forEach(function(el){
@@ -172,36 +267,13 @@ function cookie (name) {
     const cookieVal = encodeURIComponent(colour);
     document.cookie = cookieName+"=" + cookieVal;
 }
-/* Script to fixed
-function setColours() {
-    let counting = 0;
 
-    if (document.cookie.indexOf('cookie_name=') == -1){
-        let classArray = showCookie('Elipsy');
-        classArray = classArray.split(/,|;/g);
-        let newValue = [];
-    document.querySelectorAll('.elipse').forEach(function(e){
-        counting;
-        let el = e.id;
-        newValue[counting] = classArray[counting];
-        document.getElementById(el).className = newValue[counting];
-        counting++;
-    });
-} else {
-    return
-};
-};
-*/
-function deleteCookie(name) {
-    const cookieName = encodeURIComponent(name);
-    document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-}
-
+// Function to showing cookies
 function showCookie(name) {
-    if (document.cookie != "") {
+    if (document.cookie != "" && document.cookie != undefined) {
         const cookies = document.cookie.split(/; */);
 
-        for (let i=0; i<cookies.length; i++) {
+        for (let i=0; i<cookies.length-1; i++) {
             const cookieName = cookies[i].split("=")[0];
             const cookieVal = cookies[i].split("=")[1];
             if (cookieName === decodeURIComponent(name)) {
@@ -211,9 +283,8 @@ function showCookie(name) {
     }
 }
 
-/* This unlucky script still waiting for his great day*/
-/*window.addEventListener('DOMContentLoaded', setColours)*/
-
+//Event listeners
+window.addEventListener('DOMContentLoaded', popup);
 window.addEventListener('DOMContentLoaded', changingColours);
 window.addEventListener('DOMContentLoaded', headImgChanger);
 window.addEventListener('resize', navback);

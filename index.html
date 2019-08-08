@@ -8,8 +8,76 @@
     <meta name="description" content="Ubrania do oddania to projekt charytatywny...">
     <link rel="stylesheet" href="style.bundle.css">
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <!-- Script to read cookie before content of page displays.-->
+    <script>
+        function showCookie(name) {
+    if (document.cookie.split(/; */) != "") {
+        const cookies = document.cookie.split(/; */);
+        for (let i=0; i<cookies.length; i++) {
+            const cookieName = cookies[i].split("=")[0];
+            const cookieVal = cookies[i].split("=")[1];
+            if (cookieName === decodeURIComponent(name)) {
+                return decodeURIComponent(cookieVal);
+            }
+        }
+    } else return
+};
+        function setColours() {
+    let counting = 0;
+    if (document.cookie.split(/; */) != ""){
+        let classes = showCookie('Elipsy');
+        let classArray = classes.split(",");
+        if(typeof classArray[0] === 'undefined') {
+            console.log(classArray[0])
+        } else {
+    document.querySelectorAll('.elipse').forEach(function(e){
+        counting;
+        let el = e.id;
+        document.getElementById(el).className = classArray[counting];
+        counting++;
+    });
+        }
+    } else {
+        return
+    };
+}; 
+    </script>
 </head>
 <body>
+    <div class="modal" id="modal">
+        <form class="modal__inner" id="newsletter">
+            <div class="modal__close" id="modalClose">
+                <div class="modal__line"></div>
+                <div class="modal__line"></div>
+            </div>
+            <h4 class="modal__header">Newsletter</h4>
+            <p class="modal__paragraph">Cześć, czy chciałbyś otrzymywać od nas informacje o prowadzonych akcjach charytatywnych i zbiórkach?</p>
+            <p class="modal__paragraph">Zapisz się na nasz darmowy newsletter i bądź bohaterem na codzień! Obiecujemy nie spamować :)</p>
+            <input type="email" id="modalInput" class="modal__input" placeholder="Adres e-mail" required/>
+            <small class="modal__small">Udostępniając swoje dane osobowe w postaci adresu e-mail wyrażam zgodę na ich wykorzystanie w celach marketingowych.</small>
+            <input type="submit" class="modal__button" id="modalButton"></input>
+        </form>
+    </div>
+    <div class="modal" id="contactModal">
+        <form class="modal__inner modal__inner--form" id="form">
+            <div class="modal__close" id="contactModalClose">
+                <div class="modal__line"></div>
+                <div class="modal__line"></div>
+            </div>
+            <h4 class="modal__header">Formularz kontaktowy</h4>
+            <p class="modal__paragraph">Chciałbyś się z nami skontaktować?</p>
+            <p class="modal__paragraph">Zapraszamy do skorzystania niniejszego formularza :)</p>
+            <label for="contactName" class="contact__label">Imię</label>
+            <input type="text" id="contactName" name="contactName" class="modal__input" required/>
+            <label for="contactSurName" class="contact__label">Nazwisko</label>
+            <input type="text" id="contactSurName" name="contactSurName" class="modal__input" required/>
+            <label for="contactModalMail" class="contact__label">Adres e-mail</label>
+            <input type="email" id="contactModalMail" name="contactModalMail" class="modal__input" required/>
+            <label for="contactModalText" class="contact__label">Treść</label>
+            <input type="texxt" id="contactModalText" name="contactModalMail" class="modal__input" placeholder="O czym chciałbyś nas poinformować?" required/>
+            <input type="submit" class="modal__button modal__button--contact" id="modalButtonContact"></input>
+        </form>
+    </div>
         <nav class="nav">
             <div class="nav__logo"><img src="./img/logo.png" id="logo" alt="logo" class="nav__img"></div>
             <div class="nav__toggler" id="hamburger">
@@ -20,7 +88,7 @@
             <ul class="nav__wrapper" id="wrapper">
                 <li class="nav__item"><a href="#work" class="nav__link">JAK DZIAŁAMY</a></li>
                 <li class="nav__item"><a href="#about" class="nav__link">O NAS</a></li>
-                <li class="nav__item"><a href="#contact" class="nav__link">KONTAKT</a></li>
+                <li class="nav__item"><a href="#" class="nav__link" id="contact">KONTAKT</a></li>
                 <li class="nav__item"><a href="#wrapper" class="nav__link"><img id="fb" src="./img/fb.png" alt="logo facebook" class="nav__icon"></a></li>
             </ul>
         </nav>
@@ -87,9 +155,9 @@
             </div>
         </section>
         </main>
-            <footer class="contact">
+            <footer class="contact" id="footer">
                 <header class="contact__header">
-                    <h3 class="contact__title" id="contact">JAK MOŻESZ POMÓC?</h3>
+                    <h3 class="contact__title">JAK MOŻESZ POMÓC?</h3>
                     <p class="contact__paragraph"><span class="contact__paragraph--bolder">ZAANGAŻOWANIEM.</span><br> Spotkajmy się i porozmawiajmy!</p>
                 </header>
                 <div class="contact__container">
@@ -109,6 +177,7 @@
                     </div>
                 </div>
             </footer>
+            <script>setColours()</script>
     <script src="main.bundle.js"></script>
 </body>
 </html>

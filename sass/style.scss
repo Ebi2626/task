@@ -22,6 +22,151 @@ body {
 .navyBlue {
     background-color: $navyBlue;
 }
+.modal {
+    display: none;
+    transition: display .3s ease-in-out;
+    flex-direction: column;
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(255,255,255, .7);
+   
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        width: 100%;
+        max-width: 700px;
+        padding: 40px 20px;
+        border-radius: 10px;
+        background-color: white;
+        border: solid $navyBlue 1px;
+        justify-content: center;
+        box-shadow: -5px 5px 8px darkgrey;
+        &--form {
+            background-color: $navyBlue;
+            color: white;
+            .modal__close {
+                &:hover, &:active {
+                    .modal__line{
+                        background-color: $lime !important;
+                        }
+                }
+                .modal__line {
+                    background-color: $azure !important;
+                }
+            }
+            .modal__header {
+                color: white;
+            }
+            .modal__input {
+                background-color: $azure;
+                &:nth-of-type(4) {
+                    text-align: left;
+                    overflow: auto;
+                    word-break: break-all;
+                    height: 100px !important;
+                    &::placeholder {
+                        text-align: left;
+                    }
+                }
+                &::placeholder {
+                    color: $navyBlue;
+                }
+            }
+            .contact__label {
+                text-align: center;
+            }
+            .modal__paragraph {
+                color: lime;
+            }
+        }
+        .modal__label {
+            text-align: center;
+            font-size: 14px;
+            color:lime;
+        }
+        .modal__close {
+            position: absolute;
+            top: 20px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            &:hover, &:active {
+                .modal__line {
+                    background-color: $azure;
+                    width: 25px; 
+                    box-shadow: -4px 2px 5px darkgrey;
+                }
+            }
+            .modal__line {
+                position: absolute;
+                width: 30px;
+                height: 3px;
+                margin-bottom: 2px;
+                border-radius: 15px;
+                background-color: $navyBlue;
+                transition: background-color .2s linear, width .3s ease-in-out, box-shadow .3s ease-in-out;
+                &:nth-child(1) {
+                    transform: rotate(-45deg);
+                }
+                &:nth-child(2) {
+                    transform: rotate(45deg);
+                }
+            }
+        }
+    }
+    &__header {
+        align-self: center;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: $navyBlue;
+    }
+    &__paragraph {
+        text-align: center;
+        font-size: 14px;
+        color: $navyBlue;
+        line-height: 30px;
+    }
+    &__input {
+        width: 80%;
+        margin: 10px auto;
+        border: solid 2px $lime;
+        border-radius: 5px;
+        &::placeholder {
+            text-align: center;
+        }
+    }
+    &__small {
+        font-size: 11px;
+        text-align: center;
+        color: grey;
+        margin-bottom: 10px;
+    }
+    &__button {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        padding: 3px 10px;
+        margin-top: 10px;
+        border-radius: 10px;
+        color: $navyBlue;
+        background-color: $azure;
+        font-weight: bold;
+        transition: all .2s ease-in-out;
+        &:hover, &:active {
+            background-color: $lime;
+        }
+    }
+}
+.modal--active {
+    display: flex;
+}
 .nav {
     position: relative;
     @extend %flexRow;
@@ -442,6 +587,11 @@ body {
 
 /* Large phones and small tablets */
 @media #{$phone}{
+    .modal {
+        .inner__modal {
+            width: 90%;
+        }
+    }
     .nav {
         display: flex;
         flex-direction: row;
@@ -586,6 +736,11 @@ body {
 }
 }
 // Large tablets and small laptops
+.modal {
+    .inner__modal {
+        width: 80%;
+    }
+}
 @media #{$tablet}{
     .nav {
         justify-content: center;
