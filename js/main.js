@@ -18,6 +18,7 @@ function popup () {
     function popupClose() {
                 let rezygnacja = "osoba odrzucająca newsletter";
                 rezygnacja = encodeURIComponent(rezygnacja);
+                document.body.style.overflow = "auto";
                 document.cookie = "Mail="+rezygnacja;
                 modal.classList.remove("modal--active");
     };
@@ -33,6 +34,7 @@ function popup () {
                 document.cookie = "Mail="+rezygnacja;
             }
             modal.classList.remove("modal--active");
+            document.body.style.overflow = "auto";
     });
 
     // Veryfing if someone has chance to subscribe
@@ -42,6 +44,7 @@ function popup () {
     } else {
     setTimeout(function() {
         modal.classList.add("modal--active");
+        document.body.style.overflow = "hidden";
     }, 1000);
    };
 ;}
@@ -52,6 +55,7 @@ function contactPopUp(){
     contactClose = document.getElementById("contactModalClose"),
     form = document.getElementById('form');
     modalContact.classList.add("modal--active");
+    document.body.style.overflow = "hidden";
     form.addEventListener('submit', function(e){
         e.preventDefault();
         let name = document.getElementById('contactName').value,
@@ -82,12 +86,16 @@ function contactPopUp(){
                 let messageToSend = encodeURIComponent(message);
                 document.cookie = "Wiadomość="+messageToSend;
                 modalContact.classList.remove('modal--active');
-                alert("Wiadomość wysłano")
+                alert("Wiadomość wysłano");
+                document.body.style.overflow = "auto";
             }
         };
       message.validate();
     });
-    contactClose.onclick = () => modalContact.classList.remove('modal--active');
+    contactClose.onclick = () => {
+        modalContact.classList.remove('modal--active');
+        document.body.style.overflow = "auto";
+    }
 };
 
 // Changing header img when window inner width is bigger than 1024px
@@ -136,7 +144,12 @@ function pageBlock() {
     if (wrapper.classList.contains("nav__wrapper--active")) {
         document.body.style.overflowY = "hidden";
     } else {
-        document.body.style.overflowY = "auto";
+        if ((document.querySelector('#modal').classList.contains('modal--active')) || (document.querySelector('#contactModal').classList.contains('modal--active'))){
+            return
+        } else {
+            document.body.style.overflowY = "auto";
+        }
+        
     }
 }
 

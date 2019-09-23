@@ -22,6 +22,17 @@ body {
 .navyBlue {
     background-color: $navyBlue;
 }
+.modal--contact {
+    .modal__inner {
+        overflow-Y: auto;
+    }
+    .modal__inner--form {
+        justify-content: flex-start !important;
+    }
+    .modal__input {
+        min-height: 20px;
+    }
+}
 .modal {
     display: none;
     transition: display .3s ease-in-out;
@@ -40,11 +51,12 @@ body {
         position: relative;
         width: 100%;
         max-width: 700px;
-        padding: 20px 20px;
+        padding: 20px;
         border-radius: 0px;
+        overflow-Y: auto;
         background-color: white;
         border: solid $navyBlue 1px;
-        justify-content: center;
+        justify-content: flex-start;
         box-shadow: -5px 5px 8px darkgrey;
         &--form {
             background-color: $navyBlue;
@@ -149,14 +161,15 @@ body {
         margin-bottom: 10px;
     }
     &__button {
-        position: absolute;
-        bottom: 10px;
+        position: relative;
         right: 10px;
+        width: 100px;
         padding: 3px 10px;
         margin-top: 10px;
         border-radius: 10px;
         color: $navyBlue;
         background-color: $azure;
+        align-self: flex-end;
         font-weight: bold;
         transition: all .2s ease-in-out;
         &:hover, &:active {
@@ -550,6 +563,17 @@ body {
 
 /* Very little phones and similar devices pretendent to be smartphone */
 @media #{$calculator} {
+    .modal {
+        &__inner {
+            width: 100vw !important;
+            border-radius: 0px !important;
+        }
+    }
+    .modal--contact {
+        .modal__header {
+            font-size: 14px;
+        }
+    }
     .header__main {
         width: 100vw !important;
         .header__graphics {
@@ -587,11 +611,6 @@ body {
 
 /* Large phones and small tablets */
 @media #{$phone}{
-    .modal {
-        .inner__modal {
-            width: 90%;
-        }
-    }
     .nav {
         display: flex;
         flex-direction: row;
@@ -1040,7 +1059,7 @@ body {
     }
 
 }
-// Huge esktops
+// Huge desktops
 @media #{$hugeDesktop}{
     .box {
         max-width:2000px;
