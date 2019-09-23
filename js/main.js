@@ -18,7 +18,7 @@ function popup () {
     function popupClose() {
                 let rezygnacja = "osoba odrzucająca newsletter";
                 rezygnacja = encodeURIComponent(rezygnacja);
-                document.body.style.overflow = "auto";
+                document.body.style.overflowY = "auto";
                 document.cookie = "Mail="+rezygnacja;
                 modal.classList.remove("modal--active");
     };
@@ -34,7 +34,7 @@ function popup () {
                 document.cookie = "Mail="+rezygnacja;
             }
             modal.classList.remove("modal--active");
-            document.body.style.overflow = "auto";
+            document.body.style.overflowY = "auto";
     });
 
     // Veryfing if someone has chance to subscribe
@@ -44,7 +44,7 @@ function popup () {
     } else {
     setTimeout(function() {
         modal.classList.add("modal--active");
-        document.body.style.overflow = "hidden";
+        document.body.style.overflowY = "hidden";
     }, 1000);
    };
 ;}
@@ -55,7 +55,7 @@ function contactPopUp(){
     contactClose = document.getElementById("contactModalClose"),
     form = document.getElementById('form');
     modalContact.classList.add("modal--active");
-    document.body.style.overflow = "hidden";
+    document.body.style.overflowY = "hidden";
     form.addEventListener('submit', function(e){
         e.preventDefault();
         let name = document.getElementById('contactName').value,
@@ -87,14 +87,14 @@ function contactPopUp(){
                 document.cookie = "Wiadomość="+messageToSend;
                 modalContact.classList.remove('modal--active');
                 alert("Wiadomość wysłano");
-                document.body.style.overflow = "auto";
+                document.body.style.overflowY = "auto";
             }
         };
       message.validate();
     });
     contactClose.onclick = () => {
         modalContact.classList.remove('modal--active');
-        document.body.style.overflow = "auto";
+        document.body.style.overflowY = "auto";
     }
 };
 
